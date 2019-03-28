@@ -6,7 +6,7 @@ FROM nalaki/centos7-maven:v1
 #ENV MAVEN_VERSION=3.5.2
 
 # Docker Image Metadata
-#LABEL io.k8s.description="Platform for building (Maven) and running plain Java applications" \
+LABEL io.k8s.description="Platform for building (Maven) and running plain Java applications" \
       io.k8s.display-name="Java Applications" \
       io.openshift.tags="builder,java,maven" \
       io.openshift.expose-services="8080" \
