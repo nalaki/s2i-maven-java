@@ -33,7 +33,7 @@ COPY ./s2i/bin/ /usr/libexec/s2i
 
 # Maven settings.xml
 #COPY ./settings.xml /opt/maven/apache-maven-3.6.0/conf
-COPY ./settings.xml /usr/share/maven
+COPY ./settings.xml /usr/share/maven/conf
 
 RUN chown -R 1001:1001 ./
 #opt/app-root
