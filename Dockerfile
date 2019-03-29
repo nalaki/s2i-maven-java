@@ -21,6 +21,7 @@ RUN INSTALL_PKGS="java-1.8.0-openjdk java-1.8.0-openjdk-devel" && \
     yum clean all -y && \
     mkdir -p /opt/s2i/destination
 RUN yum install maven -y
+RUN mvn -version
 # S2I scripts
 COPY ./s2i/bin/ /usr/libexec/s2i
 # Install Maven
