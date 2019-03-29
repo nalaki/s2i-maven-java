@@ -30,6 +30,8 @@ RUN wget -q http://www-eu.apache.org/dist/maven/maven-3/${MAVEN_VERSION}/binarie
 
 # S2I scripts
 COPY ./s2i/bin/ /usr/libexec/s2i
+# Maven settings.xml
+COPY ./settings.xml /opt/maven/apache-maven-${MAVEN_VERSION}/conf
 
 RUN chown -R 1001:1001 ./
 #opt/app-root
