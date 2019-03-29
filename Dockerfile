@@ -21,17 +21,17 @@ RUN INSTALL_PKGS="java-1.8.0-openjdk java-1.8.0-openjdk-devel" && \
     yum clean all -y && \
     mkdir -p /opt/s2i/destination
 
-# Install Maven
-RUN wget -q http://www-eu.apache.org/dist/maven/maven-3/${MAVEN_VERSION}/binaries/apache-maven-${MAVEN_VERSION}-bin.tar.gz && \
-    mkdir /opt/maven && \
-    tar xzf apache-maven-${MAVEN_VERSION}-bin.tar.gz -C /opt/maven && \
-    rm apache-maven-${MAVEN_VERSION}-bin.tar.gz && \
-    ln -s /opt/maven/apache-maven-${MAVEN_VERSION}/bin/mvn /usr/local/bin/mvn
-
 # S2I scripts
 COPY ./s2i/bin/ /usr/libexec/s2i
+# Install Maven
+RUN wget -q http://www-eu.apache.org/dist/maven/maven-3/3.6.0/binaries/apache-maven-3.6.0-bin.tar.gz && \
+    mkdir /opt/maven && \
+    tar xzf apache-maven-3.6.0-bin.tar.gz -C /opt/maven && \
+    rm apache-maven-3.6.0-bin.tar.gz && \
+    ln -s /opt/maven/apache-maven-3.6.0/bin/mvn /usr/local/bin/mvn
+
 # Maven settings.xml
-COPY ./settings.xml /opt/maven/apache-maven-${MAVEN_VERSION}/conf
+COPY ./settings.xml /opt/maven/apache-maven-3.6.0/conf
 
 RUN chown -R 1001:1001 ./
 #opt/app-root
