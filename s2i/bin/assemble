@@ -36,6 +36,6 @@ mvn ${MVN_GOALS:-clean package} -DskipTests=${MVN_SKIP_TESTS:-true} \
 
 echo "---> Copying built application to app-root..."
 # TODO this may fail if there are more than one jar generated
-#cp -a /opt/app-root/src/target/*.jar /opt/app-root/app.jar
+cp -a /opt/app-root/src/target/*.jar /opt/app-root/app.jar
 #find /opt/app-root/src/ -name '*.jar' | cpio -pdm /opt/app-root/app.jar
-find /opt/app-root/src/ -name \*.jar -exec cp {} /opt/app-root/ \
+#find /opt/app-root/src/ -name \*.jar -exec cp {} /opt/app-root/ \
