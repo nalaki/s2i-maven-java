@@ -7,9 +7,22 @@
 # For more information see the documentation:
 #	https://github.com/openshift/source-to-image/blob/master/docs/builder_image.md
 #
+    
+#pushd ${HOME} >/dev/null
+#if [ -d .m2 ]; then
+#    tar cf - .m2
+#fi
+#popd >/dev/null
+
 
 pushd ${HOME} >/dev/null
-if [ -d .m2 ]; then
-    tar cf - .m2
+
+# ${HOME}/.m2 is the maven repo dir
+# {$HOME}/target is the class files from the previous build
+if [ -d ./target ]; then
+    tar cf - ./.m2 ./target
+else
+    tar cf - ./.m2
 fi
+
 popd >/dev/null
