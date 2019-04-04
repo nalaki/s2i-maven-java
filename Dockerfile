@@ -24,6 +24,11 @@ RUN yum install maven -y
 RUN mvn -version
 # S2I scripts
 COPY ./s2i/bin/ /usr/libexec/s2i
+#Fix permission
+RUN chmod +x /usr/libexec/s2i/assemble 
+RUN chmod +x /usr/libexec/s2i/run 
+RUN chmod +x /usr/libexec/s2i/save-artifacts 
+RUN chmod +x /usr/libexec/s2i/usage
 # Install Maven
 #RUN wget -q http://www-eu.apache.org/dist/maven/maven-3/3.6.0/binaries/apache-maven-3.6.0-bin.tar.gz && \
 #    mkdir /opt/maven && \
