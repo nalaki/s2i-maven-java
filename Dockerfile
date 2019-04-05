@@ -2,7 +2,7 @@ FROM openshift/base-centos7
 #FROM nalaki/centos7-maven:v1
 
  #MAINTAINER Tobias Brunner <tobias.brunner@vshn.ch>
-
+# add maven mirror
 ENV MAVEN_VERSION=3.6.0
 ARG S2IDIR="/home/s2i"
 ARG APPDIR="/deployments"
@@ -39,6 +39,8 @@ RUN chmod +x /usr/libexec/s2i/usage
 # Maven settings.xml
 #COPY ./settings.xml /opt/maven/apache-maven-3.6.0/conf
 COPY ./settings.xml /usr/share/maven/conf
+# add maven mirror
+RUN sed -i -e 's/<mirrors>/&\n    <mirror>\n      <id>sti-mirror<\/id>\n      <url>${env.MAVEN_MIRROR_URL}<\/url>\n      <mirrorOf>external:*<\/mirrorOf>\n    <\/mirror>/' /usr/share/maven/conf/settings.xml
 
 RUN chown -R 1001:1001 ./
 #opt/app-root
