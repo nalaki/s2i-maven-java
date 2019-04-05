@@ -40,7 +40,7 @@ RUN chmod +x /usr/libexec/s2i/usage
 #COPY ./settings.xml /opt/maven/apache-maven-3.6.0/conf
 COPY ./settings.xml /usr/share/maven/conf
 # add maven mirror
-RUN sed -i -e 's/<mirrors>/&\n    <mirror>\n      <id>sti-mirror<\/id>\n      <url>${env.MAVEN_MIRROR_URL}<\/url>\n      <mirrorOf>external:*<\/mirrorOf>\n    <\/mirror>/' /usr/share/maven/conf/settings.xml
+#RUN sed -i -e 's/<mirrors>/&\n    <mirror>\n      <id>sti-mirror<\/id>\n      <url>${env.MAVEN_MIRROR_URL}<\/url>\n      <mirrorOf>external:*<\/mirrorOf>\n    <\/mirror>/' /usr/share/maven/conf/settings.xml
 
 RUN chown -R 1001:1001 ./
 #opt/app-root
